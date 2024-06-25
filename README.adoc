@@ -5,7 +5,7 @@ https://docs.couchbase.com/columnar-java-sdk/1.0/hello-world/overview.html[Couch
 
 
 This branch documents the 1.0 release of the SDK.
-It follows the https://docs.couchbase.com/columnar-java-sdk/1.0/project-docs/compatibility.html#api-version[SDK 1.0 API].
+It follows the https://docs.couchbase.com/columnar-java-sdk/1.0/project-docs/compatibility.html#api-version[columnar SDK 1.0 API].
 
 
 == Contributing
