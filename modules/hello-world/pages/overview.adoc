@@ -1,5 +1,8 @@
 = Hello Columnar -- Java SDK
 
+IMORTANT: This page covers the pre-relase columnar SDK, for the internal preview, and remains applicable (internally) until the SDKs GA in October.
+The other pages appearing in the left-hand nav are part of docs development towards GA, and may not be accurate until GA.
+
 == Before You Start
 
 You will need Java 17 or later.
