@@ -1,4 +1,4 @@
-.Couchbase Columnar {name_platform} SDK
+// * xref:hello-world:overview.adoc[Columnar {name_platform} SDK Overview]
 
 * xref:hello-world:overview.adoc[Hello World]
 
