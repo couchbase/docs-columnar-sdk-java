@@ -1,6 +1,5 @@
 = Managing Connections
 :description: This section describes how to connect the {name-sdk} to a Couchbase cluster.
-// :page-aliases: ROOT:managing-connections,howtos:multi-network,ROOT:connecting,ROOT:connection-advanced
 :page-toclevels: 2
 
 
@@ -25,70 +24,55 @@ This page is a wider look at the topic.
 
 The examples below use these imports:
 
-[source,scala]
+[source,]
 ----
-include::devguide:example$scala/ManagingConnections.scala[tag=imports,indent=0]
+import com.couchbase.columnar.client.java.Cluster;
+import com.couchbase.columnar.client.java.Credential;
+import com.couchbase.columnar.client.java.QueryResult;
+import com.couchbase.columnar.client.java.internal.Certificates;
 ----
 
 A connection to a Couchbase Server cluster is represented by a `Cluster` object.
-A `Cluster` provides access to buckets, scopes, and collections, as well as various Couchbase services and management interfaces.
-The simplest way to create a `Cluster` object is to call `Cluster.connect()` with a <<connection-strings, connection string>> (or Capella endpoint), username, and password:
+A `Cluster` provides access to databases, scopes, and collections, as well as various Columnar services and management interfaces.
+The simplest way to create a `Cluster` object is to call `Cluster.newInstance()` with a <<connection-strings, connection string>>, username, and password:
 
-[tabs,sync-group-id="Couchbase Capella|Self-Managed Couchbase Server"]
-==== 
-Couchbase Capella::
-+
+
 --
 [source,scala]
 ----
-include::devguide:example$scala/Cloud.scala[tag=connect,indent=0]
+public class Example {
+  public static void main(String[] args) {
+    var connectionString = "couchbases://...";
+    var username = "...";
+    var password = "...";
+
+    try (Cluster cluster = Cluster.newInstance(
+      connectionString,
+      Credential.of(username, password),
+      clusterOptions -> clusterOptions
+        // Configure a secure connection to a Couchbase internal pre-production cluster.
+        // (Omit this when connecting to a production cluster!)
+        .security(it -> it.trustOnlyCertificates(Certificates.getNonProdCertificates()))
+    )) {
 ----
 
-Note, the client certificate for connecting to a Capella database is included in the SDK installation.
---
+Note, the client certificate for connecting to a Capella Columnar instance is included in the SDK installation.
 
-Self-Managed Couchbase Server::
-+ 
--- 
-[source,scala]
-----
-include::devguide:example$scala/ManagingConnections.scala[tag=initial,indent=0]
-----
---
 
-Cloud Native Gateway (CNG)::
-+
---
-Couchbase's large number of ports across the URLs of many services can be proxied by using a `couchbase2://` endpoint as the connection string --
-currently only compatible with recent versions of xref:operator:ROOT:concept-cloud-native-gateway.adoc[Couchbase Autonomous Operator]:
-
-[source,scala]
-----
-.connect(
-  "couchbase2://10.12.14.16",
-  ClusterOptions
-    .create(username, password)
-    .environment(env)
-)
-----
-
-Read more on the xref:howtos:managing-connections.adoc#cloud-native-gateway[Connections] page.
-
---
-====
-
+////
 In a production environment, your connection string should include the addresses of multiple server nodes in case some are currently unavailable.
 Multiple addresses may be specified in a connection string by delimiting them with commas:
 
 [source,scala]
 ----
-include::devguide:example$scala/ManagingConnections.scala[tag=multiple,indent=0]
+
 ----
 
 TIP: You don't need to include the address of every node in the cluster.
 The client fetches the full address list from the first node it is able to contact.
+////
 
-
+////
 === Waiting for Bootstrap Completion
 
 Opening resources is asynchronous.
@@ -108,8 +92,10 @@ Any issues opening that bucket (for instance, if it does not exist), will result
 Other timeout issues may occur when using the SDK located geographically separately from the Couchbase Server cluster -- 
 this is xref:project-docs:compatibility.adoc#network-requirements[not recommended in production deployments], but often occurs during development.
 See the <<working-in-the-cloud,Cloud section>> below for some suggestions of settings adjustments.
+////
 
 
+////
 === Connection Strings
 
 A Couchbase connection string is a comma-delimited list of IP addresses and/or hostnames, optionally followed by a list of parameters.
@@ -321,12 +307,10 @@ include::{version-common}@sdk:shared:partial$dnssrv-pars.adoc[tag=dnssrv]
 DNS SRV bootstrapping is enabled by default in the {name-sdk}.
 In order to make the SDK use the SRV records, you need to pass in the hostname from your records (here `example.com`):
 
-////
 [source,scala]
 ----
 include::devguide:example$scala/ManagingConnections.scala[tag=dnssrv,indent=0]
 ----
-////
 
 [source,scala]
 ----
@@ -385,8 +369,10 @@ There are some different behaviors seen with this protocol:
 == Working in the Cloud
 
 include::{version-common}@sdk:shared:partial$managing-connections.adoc[tag=cloud]
+////
 
 
+////
 == Async and Reactive APIs
 
 The Couchbase Scala SDK provides first-class support for asynchronous and reactive programming.
@@ -424,8 +410,13 @@ Here's the same example, but using the Reactive API instead of the Async API:
 ----
 include::devguide:example$scala/ManagingConnections.scala[tag=reactive,indent=0]
 ----
+////
 
 
 == Next Steps
 
-* xref:secure-connections.adoc[Certificate Authentication] 
+
+
+
+
+// * xref:secure-connections.adoc[Certificate Authentication] 
