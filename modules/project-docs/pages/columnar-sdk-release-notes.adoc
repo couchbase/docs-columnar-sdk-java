@@ -14,8 +14,9 @@ See the xref:compatibility.html#couchbase-feature-availability-matrix[compatibil
 
 == Installation
 
-See the xref:hello-world:overview.adoc[intro page] for current installation instructions.
+See the xref:project-docs:sdk-full-installation.adoc[Full Installation] guide for details.
 
+// tag::all[]
 
 
 [#latest-release]
@@ -33,3 +34,12 @@ First GA release of the Java columnar SDK.
 TODO - correct api ref??
 
 https://docs.couchbase.com/sdk-api/couchbase-java-columnar-client-1.0.0/com/couchbase/client/java/index.html[API Reference]
+
+// edit the links below
+////
+https://packages.couchbase.com/clients/java/3.7.0/Couchbase-Java-Client-3.7.0.zip[Download] |
+https://docs.couchbase.com/sdk-api/couchbase-java-client-3.7.0/index.html[API Reference]
+////
+
+
+// end::all[]
