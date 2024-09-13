@@ -1,7 +1,7 @@
 = Querying Your Data 
 :page-toclevels: 2
 :page-aliases: data-services.adoc,choosing-the-right-service.adoc,http-services.adoc
-:description: Choosing the right service to query your data.
+:description: Querying Capella Columnar from the {name_platform} SDK, with {sqlpp}.
 
 
 // Note to editors
@@ -13,12 +13,18 @@
 
 [abstract]
 {description}
+
+
+
 {sqlpp} is a declarative query language for JSON data.
 Couchbase also offers fuzzy search, including Vector Search.
 
 
 // remember - inventory scope ;)
 
+
+
+////
 The data service stores your documents, but is the best route to retrieving them?
 
 {sqlpp} is a SQL-family language, and an easy way for anyone familiar with Relational Databases (RDBMS) to work with documents stored in Couchbase --
@@ -27,11 +33,11 @@ if you're sure that's the service that you want, jump to our xref:howtos:sqlpp-q
 
 Couchbase also has a powerful Search Service, supporting similarity and hybrid search, combining text, vector, range, and geospatial search.
 xref:{version-server}@server:n1ql:n1ql-language-reference/searchfun.adoc[Search functions] enable you to use Search queries directly within a {sqlpp} query.
+////
 
 
 
-
-
+////
 .{sqlpp} or CRUD API?
 [TIP]
 ====
@@ -43,8 +49,13 @@ See the xref:data-durability-acid-transactions.adoc[Data Service section] for in
 == Your Use Case
 
 How you combine the Data Service and {sqlpp} should depend on your use case, but you should also examine the other options of longer running (or real time) analytical queries, fuzzy searches (such as full-text search and Geo search), and vector search.
+////
 
 
+
+
+
+////
 === Analytics Queries
 
 
@@ -54,8 +65,11 @@ Couchbase offers a choice of:
 * xref:howtos:analytics-using-sdk.adoc[Couchbase Analytics Service (CBAS)] for traditional data analytics against your operational database.
 
 Both use versions of the {sqlpp} query language.
+////
 
 
+
+////
 === Search 
 
 Fuzzy search with text or a variety of other data:
@@ -81,7 +95,7 @@ You can also enable full access to an AI ecosystem with a Langchain integration,
 
 Read more in our xref:{version-server}@server:vector-search:vector-search.adoc[Vector Search documentation],
 or dive in and try xref:howtos:vector-searching-with-sdk.adoc[Vector Search with the {name-sdk}].
-
+////
 
 
 ////
@@ -114,20 +128,24 @@ For doing each of these tasks, you need to search your database efficiently. Do 
 // schema inference - INFER command, and view in query workbench
 
 
-== Data Service
+// == Data Service
 
 
 ////
 Best practice, if one know keys  and not doing aggregates, joins, order by , any further processing, small set of keys  then use direct KV access
 ////
 
-
+////
 When you already know the Key (ID) of the document, then xref:howtos:kv-operations.adoc[Data Operations] (using the KV -- or _Key - Value_ Service) are by far the simplest way to retrieve or mutate it. 
 The binary protocol used is far quicker than streaming JSON with the Query Service.
 
 If you know the path to the piece of information that you need within a JSON document, then xref:howtos:subdocument-operations.adoc[Sub-Document operations] will not only retrieve the information more quickly, but will reduce the amount of data that needs to be sent over the network.
+////
 
 
+
+
+////
 === Range Scan
 
 From version 7.6 of self-managed Couchbase Server
@@ -150,8 +168,11 @@ For larger collections and greater performance, define the appropriate indexes t
 For ordered document key operations, a primary index provides the same functionality, and will outperform a sequential scan.
 
 Read on to learn more about the Query and Index services.
+////
 
 
+
+////
 == Query & Index
 
 // e N1QL (Non-First Normal Form Query Language)
@@ -184,7 +205,7 @@ See also the <<#furthre-reading,Further Reading>> section at the end of this pag
 
 // GSI & MOI GSI
 // B-Tree index - Still ForestDB on CE??
-
+////
 
 
 
