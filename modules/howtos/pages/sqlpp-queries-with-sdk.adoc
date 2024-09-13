@@ -17,10 +17,21 @@ For a deeper look at the concepts, to help you better understand the Query Servi
 
 
 
+Here we show queries against the Travel Sample collection, at cluster and scope level,
+and give links to information on adding other collections to your data.
+// kafka
+// postgres
+// capella
 
 
 
 
+
+
+
+
+
+////
 include::howtos:partial$n1ql-intro.adoc[]
 include::howtos:partial$n1ql-getting-started.adoc[]
 
@@ -180,5 +191,6 @@ include::howtos:partial$n1ql-additional-resources.adoc[]
 
 
 == Further Information
+////
 
 
