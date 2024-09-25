@@ -1,4 +1,5 @@
 = Full Installation
+:page-toclevels: 2
 :description: Installation instructions for the {name-sdk}.
 :page-partial:
 
