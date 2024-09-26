@@ -1,10 +1,8 @@
 = Querying with {sqlpp}
 :description: You can query for documents in Couchbase using the {sqlpp} query language, a language based on SQL, but designed for structured and flexible JSON documents.
-:page-aliases: n1ql-query.adoc,n1ql-queries-with-sdk.adoc
+// :page-aliases: n1ql-query.adoc,n1ql-queries-with-sdk.adoc
 // :page-aliases: ROOT:document-operations.adoc,ROOT:documents-creating,ROOT:documents-updating,ROOT:documents-retrieving,ROOT:documents-deleting,n1ql-queries-with-sdk.adoc
-:lang: Scala
-:example-source: devguide:example$scala/Queries.scala
-:example-source-lang: scala
+
 
 [abstract]
 {description}
@@ -12,7 +10,7 @@
 
 
 On this page we dive straight into using the Query Service API from the {name-sdk}.
-For a deeper look at the concepts, to help you better understand the Query Service, the {sqlpp} language, and the Index Service, see the links in the <<further-information,Further Information>> section at the end of this page.
+For a deeper look at the concepts, to help you better understand the Query Service, and the {sqlpp} language, see the links in the <<further-information,Further Information>> section at the end of this page.
 
 
 
@@ -36,6 +34,11 @@ Create a collection to work upon by xref:columnar:intro:examples.adoc#travel-sam
 
 
 *TODO -- add code samples.*
+
+
+
+== Further Information
+
 
 
 

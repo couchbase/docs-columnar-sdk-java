@@ -16,7 +16,7 @@
 
 This section contains the following reference docs:
 
-* https://docs.couchbase.com/sdk-api/columnar-java-client[API Reference^]
+* {sdk-api-link}[API Reference^]
 * xref:ref:client-settings.adoc[]
 * xref:ref:error-codes.adoc[Error Code Reference]
 * xref:ref:glossary.adoc[Glossary]
