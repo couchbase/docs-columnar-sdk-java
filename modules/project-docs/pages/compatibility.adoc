@@ -73,7 +73,7 @@ include::{sdk_api}@columnar-sdk:shared:partial$compatibility.adoc[tag=api-versio
 
 === Interface Stability
 
-include::{version-common}@sdk:shared:partial$interface-stability-pars.adoc[tag=interface-stability-section]
+include::{version-common}@columnar-sdk:shared:partial$interface-stability-pars.adoc[tag=interface-stability-section]
 
 
 
