@@ -1,5 +1,5 @@
 = Hello Columnar -- Java SDK
-:description: Install, connect, try. A quick start guide to get you up and running with Couchbase and the {name-sdk}.
+:description: Install, connect, try. A quick start guide to get you up and running with Columnar and the {name-sdk}.
 
 [abstract]
 {description}
