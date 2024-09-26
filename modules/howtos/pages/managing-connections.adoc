@@ -24,7 +24,7 @@ This page is a wider look at the topic.
 
 The examples below use these imports:
 
-[source,]
+[source,java]
 ----
 import com.couchbase.columnar.client.java.Cluster;
 import com.couchbase.columnar.client.java.Credential;
@@ -37,8 +37,8 @@ A `Cluster` provides access to databases, scopes, and collections, as well as va
 The simplest way to create a `Cluster` object is to call `Cluster.newInstance()` with a <<connection-strings, connection string>>, username, and password:
 
 
---
-[source,scala]
+
+[source,java]
 ----
 public class Example {
   public static void main(String[] args) {

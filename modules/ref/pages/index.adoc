@@ -1,6 +1,5 @@
 = Reference Pages
 :page-toclevels: 2
-:sdk-api-link: https://docs.couchbase.com/sdk-api/columnar-java-client
 :description: Essential reference infomation for developing with Columnar.
 
 
@@ -17,7 +16,7 @@
 
 This section contains the following reference docs:
 
-* {sdk-api-link}[API Reference^]
+* https://docs.couchbase.com/sdk-api/columnar-java-client[API Reference^]
 * xref:ref:client-settings.adoc[]
 * xref:ref:error-codes.adoc[Error Code Reference]
 * xref:ref:glossary.adoc[Glossary]
