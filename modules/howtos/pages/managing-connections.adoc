@@ -32,7 +32,7 @@ import com.couchbase.columnar.client.java.QueryResult;
 import com.couchbase.columnar.client.java.internal.Certificates;
 ----
 
-A connection to a Couchbase Server cluster is represented by a `Cluster` object.
+A connection to a Capella Columnar cluster is represented by a `Cluster` object.
 A `Cluster` provides access to databases, scopes, and collections, as well as various Columnar services and management interfaces.
 The simplest way to create a `Cluster` object is to call `Cluster.newInstance()` with a <<connection-strings, connection string>>, username, and password:
 
