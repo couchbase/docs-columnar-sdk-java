@@ -58,10 +58,8 @@ public class Example {
 WARNING: The above example uses a `try-with-resources` block to ensure the `Cluster` instance gets closed at the end.
 It's important to either use a `try-with-resources` block, or make sure to call `cluster.close()` when you're done with the cluster.
 
-The client certificate for connecting to a Capella Columnar instance is included in the SDK installation.
-
-NOTE: Capella's root certificate is *not* signed by a well known CA (Certificate Authority).
-However, as the certificate is bundled with the SDK, it is trusted by default.
+NOTE: Capella's root certificate is *not* signed by a well known Certificate Authority.
+However, the certificate is bundled with the SDK, and is automatically trusted unless you specify a different certificate to trust.
 
 
 
