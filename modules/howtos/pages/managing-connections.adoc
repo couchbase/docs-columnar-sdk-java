@@ -29,7 +29,6 @@ The examples below use these imports:
 import com.couchbase.columnar.client.java.Cluster;
 import com.couchbase.columnar.client.java.Credential;
 import com.couchbase.columnar.client.java.QueryResult;
-import com.couchbase.columnar.client.java.internal.Certificates;
 ----
 
 A connection to a Capella Columnar cluster is represented by a `Cluster` object.
@@ -42,16 +41,22 @@ The simplest way to create a `Cluster` object is to call `Cluster.newInstance()`
 ----
 public class Example {
   public static void main(String[] args) {
-    var connectionString = "cb.<your-endpoint>.cloud.couchbase.com"
+    var connectionString = "couchbases://cb.<your-endpoint>.cloud.couchbase.com";
     var username = "...";
     var password = "...";
 
     try (Cluster cluster = Cluster.newInstance(
       connectionString,
-      Credential.of(username, password),
-      clusterOptions -> clusterOptions
-    ))
+      Credential.of(username, password)
+    )) {
+        // Interact with the cluster here
+    }
+  }
+}
 ----
+
+WARNING: The above example uses a `try-with-resources` block to ensure the `Cluster` instance gets closed at the end.
+It's important to either use a `try-with-resources` block, or make sure to call `cluster.close()` when you're done with the cluster.
 
 The client certificate for connecting to a Capella Columnar instance is included in the SDK installation.
 
@@ -70,9 +75,9 @@ Just as in a URI, the first parameter is prefixed by a question mark (`?`).
 For Columnar, as for all Capella products, connection must be made with Transport Layer Security (TLS) -- for full encryption of client-side traffic --
 for which the `couchbases://` schema is used as the root of the connection string (note the trailing *s*).
 
-.Simple connection string with one seed node
+.Simple connection string
 ----
-cb.<your-endpoint>.cloud.couchbase.com
+couchbases://cb.<your-endpoint>.cloud.couchbase.com
 ----
 
 ////
@@ -91,7 +96,7 @@ The client fetches the full address list from the first node it is able to conta
 
 .Connection string with two parameters
 ----
-cb.<your-endpoint>.cloud.couchbase.com?io.networkResolution=external&timeout.kvTimeout=10s
+couchbases://cb.<your-endpoint>.cloud.couchbase.com?timeout.connect_timeout=30s&timeout.query_timeout=2m
 ----
 
 The full list of recognized parameters is documented in the xref:ref:client-settings.adoc[client settings reference].

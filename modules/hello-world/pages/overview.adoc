@@ -139,10 +139,10 @@ public class Example {
     try (Cluster cluster = Cluster.newInstance(
       connectionString,
       Credential.of(username, password),
+      // The third parameter is optional.
+      // This example sets the default query timeout to 2 minutes.
       clusterOptions -> clusterOptions
-        // Configure a secure connection to a Couchbase internal pre-production cluster.
-        // (Omit this when connecting to a production cluster!)
-        .security(it -> it.trustOnlyCertificates(Certificates.getNonProdCertificates()))
+        .timeout(it -> it.queryTimeout(Duration.ofMinutes(2)))
     )) {
 
       // Execute a query and buffer all result rows in client memory.
