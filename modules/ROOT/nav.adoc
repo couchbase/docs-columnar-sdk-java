@@ -5,6 +5,7 @@
 *** xref:howtos:troubleshooting-connections.adoc[Troubleshooting Connections]
 * xref:concept-docs:querying-your-data.adoc[]
 ** xref:howtos:sqlpp-queries-with-sdk.adoc[]
+* xref:howtos:logging.adoc[]
 * xref:project-docs:deployment.adoc[SDK Deployment]
 ** xref:project-docs:sdk-release-notes.adoc[Release Notes]
 // *** https://docs-archive.couchbase.com/home/index.html[Older Versions Archive^]
