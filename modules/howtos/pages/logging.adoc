@@ -1,4 +1,5 @@
 = Logging
+:page-toclevels: 2
 :description: Configuring logging with the Columnar Java SDK.
 
 [abstract]

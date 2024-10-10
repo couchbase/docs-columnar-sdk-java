@@ -1,176 +1,100 @@
-= Hello Columnar -- Java SDK
+= Java Columnar SDK
+:page-layout: landing-page-top-level-sdk
+:page-role: tiles
+:!sectids:
 
-IMPORTANT: This page covers the pre-relase columnar SDK, for the internal preview, and remains applicable (internally) until the SDKs GA in October.
-The other pages appearing in the left-hand nav are part of docs development towards GA, and may not be accurate until GA.
-
-== Before You Start
-
-You will need Java 17 or later.
-We recommend using the most recent long-term support (LTS) version of OpenJDK.
-
-TIP: Remember to keep your Java installation up to date with the latest patches.
-
-== Getting the SDK
-
-Couchbase publishes all stable artifacts to https://central.sonatype.com/namespace/com.couchbase.client[Maven Central].
-
-Use your favorite dependency management tool to include the SDK in your project.
-
-[{tabs}]
-====
-Maven::
-+
---
-For https://maven.apache.org[Maven], add this to the `dependencies` section of your project's `pom.xml` file:
-
-[source,xml,subs="attributes+"]
-----
-<dependency>
-    <groupId>com.couchbase.client</groupId>
-    <artifactId>couchbase-columnar-java-client</artifactId>
-    <version>{sdk_current_version}</version>
-</dependency>
-----
-Refer to the https://maven.apache.org/guides/introduction/introduction-to-the-pom.html/[Maven Documentation] for more information regarding the structure of the `pom.xml` file.
---
-Gradle (Kotlin)::
-+
---
-For a https://gradle.org/[Gradle] script written in Kotlin, add this line to the `dependencies` section of your project's `build.gradle.kts` file:
-
-[source,kotlin,subs="attributes+"]
-----
-implementation("com.couchbase.client:couchbase-columnar-java-client:{sdk_current_version}")
-----
---
-Gradle (Groovy)::
-+
---
-For a https://gradle.org/[Gradle] script written in Groovy, add this line to the `dependencies` section of your project's `build.gradle` file:
-
-[source,groovy,subs="attributes+"]
-----
-implementation 'com.couchbase.client:couchbase-columnar-java-client:{sdk_current_version}'
-----
---
-====
+= Java Columnar SDK
 
 
-[maven-project-template]
-== Maven Project Template
-
-The SDK's source code repository includes an https://github.com/couchbase/couchbase-jvm-clients/tree/master/columnar-java-client/examples[example Maven project] you can copy to get started quickly.
 
 
-[snapshots]
-== Using a Snapshot Version
 
-Couchbase publishes pre-release snapshot artifacts to the Sonatype OSS Snapshot Repository.
-If you wish to use a snapshot version, you'll need to tell your build tool about this repository.
+The Columnar Java SDK allows you to connect to a Capella Columnar cluster from Java.
+For connecting to a Couchbase Server Cluster -- self-managed, or Capella Operational --
+see our xref:java-sdk:hello-world:overview.adoc[Java Server SDK].
 
-[{tabs}]
-====
-Maven::
-+
---
-.`*pom.xml*`
-[source,xml]
-----
-<repositories>
-  <repository>
-    <id>sonatype-snapshots</id>
-    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    <releases><enabled>false</enabled></releases>
-    <snapshots><enabled>true</enabled></snapshots>
-  </repository>
-</repositories>
-----
---
-Gradle (Kotlin)::
-+
---
-.`*build.gradle.kts*`
-[source,kotlin]
-----
-repositories {
-    mavenCentral()
-    maven {
-        url = uri("https://oss.sonatype.org/content/repositories/snapshots")
-        mavenContent { snapshotsOnly() }
-    }
-}
-----
---
-Gradle (Groovy)::
-+
---
-.`*build.gradle*`
-[source,groovy]
-----
-repositories {
-    mavenCentral()
-    maven {
-        url "https://oss.sonatype.org/content/repositories/snapshots"
-        mavenContent { snapshotsOnly() }
-    }
-}
-----
---
-====
 
-[quickstart]
-== Connecting and Executing a Query
+{empty} +
 
-[source,java]
-----
-import com.couchbase.columnar.client.java.Cluster;
-import com.couchbase.columnar.client.java.Credential;
-import com.couchbase.columnar.client.java.QueryResult;
-import com.couchbase.columnar.client.java.internal.Certificates;
+== icon:database[] Using Your Database
 
-import java.util.List;
+How-to guides and tutorials to help you start your development journey with Columnar and the Java SDK.
 
-public class Example {
-  public static void main(String[] args) {
-    var connectionString = "couchbases://...";
-    var username = "...";
-    var password = "...";
+++++
+<div class="card-row three-column-row">
+++++
 
-    try (Cluster cluster = Cluster.newInstance(
-      connectionString,
-      Credential.of(username, password),
-      // The third parameter is optional.
-      // This example sets the default query timeout to 2 minutes.
-      clusterOptions -> clusterOptions
-        .timeout(it -> it.queryTimeout(Duration.ofMinutes(2)))
-    )) {
+[.column]
+.Getting Started
+* xref:hello-world:start-using-sdk.adoc[]
+* xref:howtos:managing-connections.adoc[Connecting to Columnar]
+* xref:howtos:sqlpp-queries-with-sdk.adoc[]
 
-      // Execute a query and buffer all result rows in client memory.
-      QueryResult result = cluster.executeQuery("select 1");
-      result.rows().forEach(row -> System.out.println("Got row: " + row));
+////
+[.column]
+.Managing Couchbase
+* xref:howtos:managing-connections.adoc[]
+* xref:howtos:sdk-authentication.adoc[]
+* xref:howtos:provisioning-cluster-resources.adoc[]
+* xref:howtos:sdk-user-management-example.adoc[]
 
-      // Execute a query and process rows as they arrive from server.
-      cluster.executeStreamingQuery(
-          "select 1",
-          row -> System.out.println("Got row: " + row)
-      );
+[.column]
+.Errors & Diagnostics
+* xref:howtos:error-handling.adoc[]
+* xref:howtos:collecting-information-and-logging.adoc[]
+* xref:howtos:slow-operations-logging.adoc[]
 
-      // Execute a streaming query with positional arguments.
-      cluster.executeStreamingQuery(
-        "select ?=1",
-        row -> System.out.println("Got row: " + row),
-        options -> options
-          .parameters(List.of(1))
-      );
+++++
+</div>
+++++
 
-      // Execute a streaming query with named arguments.
-      cluster.executeStreamingQuery(
-        "select $foo=1",
-        row -> System.out.println("Got row: " + row),
-        options -> options
-          .parameters(Map.of("foo", 1))
-      );
-    }
-  }
-}
-----
+== icon:graduation-cap[] Learn
+
+Take a deep-dive into the SDK concept material and learn more about Couchbase and Columnar.
+
+++++
+<div class="card-row three-column-row">
+++++
+
+[.column]
+.Data Concepts
+* xref:concept-docs:data-model.adoc[]
+* xref:concept-docs:data-services.adoc[Service Selection]
+* xref:concept-docs:encryption.adoc[Field Level Encryption]
+
+[.column]
+.Errors & Diagnostics Concepts
+* xref:concept-docs:errors.adoc[]
+* xref:concept-docs:response-time-observability.adoc[]
+* xref:concept-docs:durability-replication-failure-considerations.adoc[]
+
+++++
+</div>
+++++
+
+== icon:book[] Resources
+
+Useful resources to help support your development experience with Columnar and the Java SDK.
+
+++++
+<div class="card-row three-column-row">
+++++
+////
+
+[.column]
+.Reference
+* https://docs.couchbase.com/sdk-api/couchbase-columnar-java-client-1.0.0/com.couchbase.columnar.client.java/module-summary.html[API Reference]
+* xref:ref:client-settings.adoc[]
+* xref:ref:error-codes.adoc[]
+* xref:ref:glossary.adoc[Glossary]
+
+[.column]
+.Deployment Docs
+* xref:project-docs:columnar-sdk-release-notes.adoc[]
+* xref:project-docs:compatibility.adoc[Compatibility]
+* xref:project-docs:sdk-full-installation.adoc[]
+
+++++
+</div>
+++++
+

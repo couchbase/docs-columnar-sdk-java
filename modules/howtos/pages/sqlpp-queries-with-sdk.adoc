@@ -33,14 +33,54 @@ Create a collection to work upon by xref:columnar:intro:examples.adoc#travel-sam
 == Querying Your Dataset
 
 
-*TODO -- add code samples.*
+Execute a query and buffer all result rows in client memory:
+
+.Scope Level
+[source,java]
+----
+QueryResult result = scope.executeQuery("select 1");
+result.rows().forEach(row -> System.out.println("Got row: " + row));
+----
+
+.Cluster Level
+[source,java]
+----
+QueryResult result = cluster.executeQuery("select 1");
+result.rows().forEach(row -> System.out.println("Got row: " + row));
+----
+
+Execute a streaming query with positional arguments:
+
+.Positional Parameters
+[source,java]
+----
+cluster.executeStreamingQuery(
+  "select ?=1",
+  row -> System.out.println("Got row: " + row),
+  options -> options
+    .parameters(List.of(1))
+);
+----
+
+Execute a streaming query with named arguments:
+
+.Named Parameters
+[source,java]
+----
+cluster.executeStreamingQuery(
+  "select $foo=1",
+  row -> System.out.println("Got row: " + row),
+  options -> options
+    .parameters(Map.of("foo", 1))
+);
+----
 
 
 
 == Further Information
 
-
-
+The xref:server:analytics:1_intro.adoc[{sqlpp} for Analytics Reference]
+offers a complete guide to the SQL++ language for both of our analytics services, including all of the latest additions.
 
 
 

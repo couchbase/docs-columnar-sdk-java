@@ -1,4 +1,4 @@
-= Hello Columnar -- Java SDK
+= Hello Columnar -- Java SDK Quickstart Guide
 :page-toclevels: 2
 :description: Install, connect, try. A quick start guide to get you up and running with Columnar and the {name-sdk}.
 
@@ -10,6 +10,13 @@
 
 
 == Before You Start
+
+Sign up for a xref:cloud:get-started:create-account.adoc#sign-up-free-trial[Capella Free Trial],
+and choose a xref:columnar:intro:intro.adoc[Columnar] cluster.
+
+You'll need to add your IP address to the allowlist, during the sign-up and cluster creation process (this can also be done at any time, via the UI, should the address change, or if you need to add a new one).
+
+=== Prerequisites
 
 You will need Java 17 or later.
 We recommend using the most recent long-term support (LTS) version of OpenJDK.
@@ -90,10 +97,10 @@ public class Example {
     try (Cluster cluster = Cluster.newInstance(
       connectionString,
       Credential.of(username, password),
+      // The third parameter is optional.
+      // This example sets the default query timeout to 2 minutes.
       clusterOptions -> clusterOptions
-        // Configure a secure connection to a Couchbase internal pre-production cluster.
-        // (Omit this when connecting to a production cluster!)
-        .security(it -> it.trustOnlyCertificates(Certificates.getNonProdCertificates()))
+        .timeout(it -> it.queryTimeout(Duration.ofMinutes(2)))
     )) {
 
       // Execute a query and buffer all result rows in client memory.
