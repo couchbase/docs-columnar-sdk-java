@@ -73,7 +73,7 @@ Note that although the Golang syntax allows negative durations, the SDK rejects 
 [#booleans]
 === Booleans
 
-For boolean client settings, the SDK expects the connection string value to be `true` or `false` (case-sensitive).
+For boolean client settings, the SDK expects the connection string parameter value to be `true` or `false` (case-sensitive).
 
 The values `1` and `0` may be used as aliases for `true` and `false`.
 
@@ -177,7 +177,7 @@ Cluster cluster = Cluster.connect(
 <1> Ignore unknown properties instead of throwing exception.
 
 This cluster option specifies the _default_ deserializer.
-You can override the deserializer for a specific query by setting the `serializer` query option when executing the query.
+You can override the deserializer for a specific query by setting the `deserializer` query option when executing the query.
 
 TIP: If you prefer not to work with the `Deserializer` interface, you can always call `row.bytes()` to get a row's content as a raw byte array.
 Then you can process the byte array however you like.
