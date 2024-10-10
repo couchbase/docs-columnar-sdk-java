@@ -1,7 +1,5 @@
 = Logging
-:description: Configuring logging
-:page-topic-type: howto
-:page-aliases: ROOT:logging
+:description: Configuring logging with the Columnar Java SDK.
 
 [abstract]
 {description}
