@@ -14,67 +14,27 @@
 Sign up for a xref:cloud:get-started:create-account.adoc#sign-up-free-trial[Capella Free Trial],
 and choose a xref:columnar:intro:intro.adoc[Columnar] cluster.
 
-You'll need to add your IP address to the allowlist, during the sign-up and cluster creation process (this can also be done at any time, via the UI, should the address change, or if you need to add a new one).
+After creating the cluster, add your IP address to the list of allowed IP addresses.
+// TODO: Link to https://docs.couchbase.com/columnar/admin/ip-allowed-list.html
 
-=== Prerequisites
+[#minimum-java-version]
+=== Minimum Java Version
 
-You will need Java 17 or later.
+The {name-sdk} requires Java 17 or later.
 We recommend using the most recent long-term support (LTS) version of OpenJDK.
 
 TIP: Remember to keep your Java installation up to date with the latest patches.
 
-== Getting the SDK
-
-Couchbase publishes all stable artifacts to https://central.sonatype.com/namespace/com.couchbase.client[Maven Central].
-
-Use your favorite dependency management tool to include the SDK in your project.
-
-[{tabs}]
-====
-Maven::
-+
---
-For https://maven.apache.org[Maven], add this to the `dependencies` section of your project's `pom.xml` file:
-
-[source,xml,subs="attributes+"]
-----
-<dependency>
-    <groupId>com.couchbase.client</groupId>
-    <artifactId>couchbase-columnar-java-client</artifactId>
-    <version>{sdk_current_version}</version>
-</dependency>
-----
-Refer to the https://maven.apache.org/guides/introduction/introduction-to-the-pom.html/[Maven Documentation] for more information regarding the structure of the `pom.xml` file.
---
-Gradle (Kotlin)::
-+
---
-For a https://gradle.org/[Gradle] script written in Kotlin, add this line to the `dependencies` section of your project's `build.gradle.kts` file:
-
-[source,kotlin,subs="attributes+"]
-----
-implementation("com.couchbase.client:couchbase-columnar-java-client:{sdk_current_version}")
-----
---
-Gradle (Groovy)::
-+
---
-For a https://gradle.org/[Gradle] script written in Groovy, add this line to the `dependencies` section of your project's `build.gradle` file:
-
-[source,groovy,subs="attributes+"]
-----
-implementation 'com.couchbase.client:couchbase-columnar-java-client:{sdk_current_version}'
-----
---
-====
-
-
 [maven-project-template]
-=== Maven Project Template
+== Maven Project Template
 
-The SDK's source code repository includes an https://github.com/couchbase/couchbase-jvm-clients/tree/master/columnar-java-client/examples[example Maven project] you can copy to get started quickly.
+The SDK's source code repository includes an https://github.com/couchbase/couchbase-jvm-clients/tree/columnar-java-client-{sdk_current_version}/columnar-java-client/examples[example Maven project] you can copy to get started quickly.
 
+== Adding the SDK to an Existing Project
 
+Declare a dependency on the SDK using its xref:project-docs:sdk-full-installation.adoc[].
+
+To see log messages from the SDK, xref:howtos:logging.adoc[include an SLF4J binding in your project].
 
 [quickstart]
 == Connecting and Executing a Query
@@ -84,7 +44,6 @@ The SDK's source code repository includes an https://github.com/couchbase/couchb
 import com.couchbase.columnar.client.java.Cluster;
 import com.couchbase.columnar.client.java.Credential;
 import com.couchbase.columnar.client.java.QueryResult;
-import com.couchbase.columnar.client.java.internal.Certificates;
 
 import java.util.List;
 

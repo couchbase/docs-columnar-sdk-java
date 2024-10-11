@@ -14,7 +14,7 @@ See the xref:compatibility.html#couchbase-feature-availability-matrix[compatibil
 
 == Installation
 
-See the xref:project-docs:sdk-full-installation.adoc[Full Installation] guide for details.
+See the xref:project-docs:sdk-full-installation.adoc[Maven Coordinates] guide for details.
 
 // tag::all[]
 
