@@ -50,7 +50,7 @@ Here is an example connection string with two parameters:
 
 [source]
 ----
-couchbases://example.com?timeout.connect_timeout=30s&timeout.queryTimeout=2m
+couchbases://example.com?timeout.connect_timeout=30s&timeout.query_timeout=2m
 ----
 
 If the same parameter name appears in the connection string more than once, the SDK uses the rightmost value.
