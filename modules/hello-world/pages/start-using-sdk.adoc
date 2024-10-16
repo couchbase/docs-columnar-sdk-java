@@ -9,9 +9,12 @@
 
 
 
+include::columnar-sdk:shared:partial$start-using-sdk.adoc[tag=intro]
+
+
 == Before You Start
 
-Sign up for a xref:cloud:get-started:create-account.adoc[Capella Free Tier],
+Sign up for a xref:cloud:get-started:create-account.adoc[Capella account],
 and choose a xref:columnar:intro:intro.adoc[Columnar] cluster.
 
 After creating the cluster, add your IP address to the list of allowed IP addresses.
