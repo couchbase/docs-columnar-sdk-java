@@ -1,5 +1,6 @@
 = Querying with {sqlpp}
 :description: You can query for documents in Couchbase using the {sqlpp} query language, a language based on SQL, but designed for structured and flexible JSON documents.
+:page-toclevels: 2
 // :page-aliases: n1ql-query.adoc,n1ql-queries-with-sdk.adoc
 // :page-aliases: ROOT:document-operations.adoc,ROOT:documents-creating,ROOT:documents-updating,ROOT:documents-retrieving,ROOT:documents-deleting,n1ql-queries-with-sdk.adoc
 
@@ -50,9 +51,21 @@ result.rows().forEach(row -> System.out.println("Got row: " + row));
 ----
 
 
+=== Streaming Queries
+
+If you can buffer all of the results in memory, then `executeQuery()` is the simplest method to use,
+but frequently the data size will be too large for this -- or you need to plan for that possibility.
+Use `executeStreamingQuery()` to execute a query statement and pass the resultant rows to the given `rowAction` callback, one by one, as they arrive from the server.
+
+The callback action is guaranteed to execute in the same thread (or virtual thread) that called this method.
+If the callback throws an exception, the query is cancelled and the exception is re-thrown by this method.
+See the link:++https://docs.couchbase.com/sdk-api/couchbase-columnar-java-client/com.couchbase.columnar.client.java/com/couchbase/columnar/client/java/Cluster.html#executeStreamingQuery(java.lang.String,java.util.function.Consumer,java.util.function.Consumer)++[API reference] for more details.
+
+
 === Positional and Named Parameters
 
-Supplying parameters as individual arguments to the query allows the query engine to optimize the parsing and planning of the query. You can either supply these parameters by name or by position.
+Supplying parameters as individual arguments to the query allows the query engine to optimize the parsing and planning of the query.
+You can either supply these parameters by name or by position.
 
 Execute a streaming query with positional arguments:
 
