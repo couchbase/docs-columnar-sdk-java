@@ -1,5 +1,5 @@
 = Managing Connections
-:description: This section describes how to connect the {name-sdk} to a Couchbase cluster.
+:description: This section describes how to connect the {name-sdk} to an {oi-cloud-name} cluster.
 :page-toclevels: 2
 
 
@@ -16,7 +16,7 @@
 It contains best practices as well as advanced connection options.
 
 
-Our xref:hello-world:start-using-sdk.adoc[Getting Started pages] cover the basics of making a connection to a Capella Columnar cluster.
+Our xref:hello-world:start-using-sdk.adoc[Getting Started pages] cover the basics of making a connection to an {oi-cloud-name} cluster.
 This page is a wider look at the topic.
 
 
@@ -31,7 +31,7 @@ import com.couchbase.columnar.client.java.Credential;
 import com.couchbase.columnar.client.java.QueryResult;
 ----
 
-A connection to a Capella Columnar cluster is represented by a `Cluster` object.
+A connection to an {oi-cloud-name} cluster is represented by a `Cluster` object.
 A `Cluster` provides access to databases, scopes, and collections, as well as various Columnar services and management interfaces.
 The simplest way to create a `Cluster` object is to call `Cluster.newInstance()` with a <<connection-strings, connection string>>, username, and password:
 
@@ -70,7 +70,7 @@ A Couchbase connection string is a comma-delimited list of IP addresses and/or h
 The parameter list is just like the query component of a URI; name-value pairs have an equals sign (`=`) separating the name and value, with an ampersand (`&`) between each pair.
 Just as in a URI, the first parameter is prefixed by a question mark (`?`).
 
-For Columnar, as for all Capella products, connection must be made with Transport Layer Security (TLS) -- for full encryption of client-side traffic --
+For {oi-cloud-name}, as for all Capella products, connection must be made with Transport Layer Security (TLS) -- for full encryption of client-side traffic --
 for which the `couchbases://` schema is used as the root of the connection string (note the trailing *s*).
 
 .Simple connection string
