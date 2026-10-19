@@ -16,6 +16,7 @@ asciidoc:
     version-common: '1.0'
     name_platform: 'Java'
     name-sdk: 'Java Columnar SDK'
+    oi-cloud-name: 'Operational Insights (Capella)'
     sdk_api: '1.0'
     sdk-api-link: https://docs.couchbase.com/sdk-api/columnar-java-client
     sdk-gh-link: https://github.com/couchbase/couchbase-jvm-clients
